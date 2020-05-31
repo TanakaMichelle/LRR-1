@@ -40,7 +40,7 @@ if (!empty($_POST["frm_signup_1"])) {
       //  Just removed this condition from the above command and (Passport_Number='$passport' or Passport_Number = '')
      if(mysqli_num_rows($result)==0)
     {
-        $_SESSION["info_signup1"]="Student Information could not be verified ! Plaese contact student Management Office.";
+        $_SESSION["info_signup1"]="Student Information could not be verified ! Please contact the Student Management Office.";
         header("Location: index.php");     
         return;		
     }
@@ -61,7 +61,7 @@ if (!empty($_POST["frm_signup_1"])) {
     }
     else
     { 
-        $_SESSION["info_signup1"]="Student ID already Used ! Please contact student Management Office if you could not login to your account.";
+        $_SESSION["info_signup1"]="Student ID already exists ! Please contact Student Management Office if you could not login to your account.";
         header("Location: index.php");
         return;		
     } 
@@ -109,16 +109,16 @@ if (!empty($_POST["frm_signup_1"])) {
  // check for strong password
      if($containsAll < 8)
    {
-      $_SESSION['info_signup2']="Password should contain Letters , Numbers and sepcial characters";
+      $_SESSION['info_signup2']="Password should contain Letters , Numbers and special characters";
      header("Location: signup.php");
      return;
     }
-   // check if email is taked
+   // check if email already exists in the database
      $result = mysqli_query($con,
         "SELECT * FROM Users_Table WHERE email='$email'");
    if(mysqli_num_rows($result)!=0)
     {
-        $_SESSION["info_signup2"]="Email adress : ".$email." is already used.";
+        $_SESSION["info_signup2"]="Email adress : ".$email."  already exists.";
         header("Location: signup.php"); 
         return;       
     }
@@ -300,7 +300,7 @@ if (!empty($_POST["frm_reset_password"])) {
 if(mysqli_num_rows($result)==0)
  {
     
-echo "invalid email";
+echo "Invalid email.";
 return;
        
  }
@@ -325,7 +325,7 @@ if($user_token==$token)
        
        error_reporting(0);
 
-	    $_SESSION["info_login"]=" Password changed successfully , you can login now with your new password ";
+	    $_SESSION["info_login"]=" Password changed successfully , you can now login with your new password ";
    header("Location: index.php");
                                    
 	   }
@@ -381,12 +381,12 @@ if($user_token==$token)
      $fullname=mysqli_real_escape_string($con,$_POST["fullname"]);
        $type=mysqli_real_escape_string($con,$_POST["type"]);
        $password=$passport;
-   // check if email is taked
+   // check if email alraedy exists in the database
      $result = mysqli_query($con,
         "SELECT * FROM Users_Table WHERE email='$email'");
    if(mysqli_num_rows($result)!=0)
     {
-        $_SESSION["info_Admin_Users"]="Email adress : ".$email." is already used.";
+        $_SESSION["info_Admin_Users"]="Email adress : ".$email." already exists.";
         header("Location: Admin.php");        
     }
     $sql= "INSERT INTO `users_table`(`Email`, `Password`, `Full_Name`, `UserType`, `Passport_Number`) VALUES "
@@ -913,7 +913,7 @@ if($result>20)
   
          if($joining==0)
          {
-         $_SESSION["info_Courses_student"]="You enroll in this Course successfully.";
+         $_SESSION["info_Courses_student"]="You have successfully enrolled in this Course.";
          }
  else {
       $_SESSION["info_Courses_student"]="Course enrollment request was sent to the lecturer.";
@@ -954,7 +954,7 @@ if($result>20)
             
             if($marks>$total)
             {
-                echo " Marks could not be greater than total";
+                echo " Marks cannot be greater than total";
                 return;
             }
           $date=  date("Y-m-d H:i");

@@ -316,7 +316,7 @@ echo "</select>  <input type='hidden' name='assignTA' value='true'> <input type=
     <script>
     function updatePass(id,pass)
     {
-      if(!confirm('Are you to Reset User Password'))
+      if(!confirm(' Would you like to reset user password?'))
       {
         return;  
       }
@@ -326,7 +326,7 @@ echo "</select>  <input type='hidden' name='assignTA' value='true'> <input type=
     
       function blockUser(id,status)
     {
-          if(!confirm('Are you to change User Status'))
+          if(!confirm(' Would you like to change user status?'))
       {
         return;  
       }

@@ -381,7 +381,7 @@ if($user_token==$token)
      $fullname=mysqli_real_escape_string($con,$_POST["fullname"]);
        $type=mysqli_real_escape_string($con,$_POST["type"]);
        $password=$passport;
-   // check if email alraedy exists in the database
+   // check if email already exists in the database
      $result = mysqli_query($con,
         "SELECT * FROM Users_Table WHERE email='$email'");
    if(mysqli_num_rows($result)!=0)
